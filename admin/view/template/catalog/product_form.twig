@@ -72,7 +72,45 @@
                       {% if error_name[language.language_id] %}
                         <div class="text-danger">{{ error_name[language.language_id] }}</div>
                       {% endif %} </div>
+<<<<<<< edf1dbfc68279620d1479dd25eb2b92ad7607c1d
                   </div>                  
+=======
+                  </div>
+                  <div class="form-group required">
+                    <label class="col-md-2 control-label" for="input-supplier{{ language.language_id }}">{{ entry_supplier }}</label>                    
+                    <div class="col-sm-10">
+                      <select name="product_description[{{ language.language_id }}][supplier]" id="input-supplier{{ language.language_id }}" class="form-control">
+                        {% for supplier in supplier_list %}
+                          {% if supplier.supplier_id == supplier_id %}
+                            <option value="{{ supplier.supplier_id }}" selected="selected">{{ supplier.supplier_short_name }}</option>
+                          {% else %}
+                            <option value="{{ supplier.supplier_id }}">{{ supplier.supplier_short_name }}</option>
+                          {% endif %}
+                        {% endfor %}
+                      </select>
+                      {% if error_supplier[language.language_id] %}
+                        <div class="text-danger">{{ error_supplier[language.language_id] }}</div>
+                      {% endif %}
+                    </div>
+                  </div>
+                  <div class="form-group required">
+                    <label class="col-md-2 control-label" for="input-gold-type{{ language.language_id }}">{{ entry_gold_type }}</label>                    
+                    <div class="col-sm-10">
+                      <select name="product_description[{{ language.language_id }}][gold_type]" id="input-gold_type{{ language.language_id }}" class="form-control">
+                        {% for gold_type in gold_type_list %}
+                          {% if gold_type.gt_id == gt_id %}
+                            <option value="{{ gold_type.gt_id }}" selected="selected">{{ gold_type.gt_name }}</option>
+                          {% else %}
+                            <option value="{{ gold_type.gt_id }}">{{ gold_type.gt_name }}</option>
+                          {% endif %}
+                        {% endfor %}
+                      </select>
+                      {% if error_gold_type[language.language_id] %}
+                        <div class="text-danger">{{ error_gold_type[language.language_id] }}</div>
+                      {% endif %}
+                    </div>
+                  </div>
+>>>>>>> add project
                   <div class="form-group">
                     <label class="col-md-2 control-label" for="input-description{{ language.language_id }}">{{ entry_description }}</label>
                     <div class="col-md-10">
@@ -168,6 +206,7 @@
                 </div>
               </div>
               <div class="form-group">
+<<<<<<< edf1dbfc68279620d1479dd25eb2b92ad7607c1d
                 <label class="col-md-2 control-label" for="input-supplier">{{ entry_supplier }}</label>
                 <div class="col-md-6">
                   <select name="supplier_id" id="input-supplier" class="form-control">
@@ -196,6 +235,8 @@
                 </div>
               </div>
               <div class="form-group">
+=======
+>>>>>>> add project
                 <label class="col-md-2 control-label" for="input-model">{{ entry_model }}</label>
                 <div class="col-md-6">
                   <div class="row">

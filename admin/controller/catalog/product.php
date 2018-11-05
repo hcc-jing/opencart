@@ -18,7 +18,11 @@ class ControllerCatalogProduct extends Controller {
 		$this->document->setTitle($this->language->get('heading_title'));
 
 		$this->load->model('catalog/product');
+<<<<<<< edf1dbfc68279620d1479dd25eb2b92ad7607c1d
 		// d($this->request->post);exit;
+=======
+
+>>>>>>> add project
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_catalog_product->addProduct($this->request->post);
 
@@ -68,7 +72,11 @@ class ControllerCatalogProduct extends Controller {
 		$this->load->language('catalog/product');
 
 		$this->document->setTitle($this->language->get('heading_title'));
+<<<<<<< edf1dbfc68279620d1479dd25eb2b92ad7607c1d
 		// d($this->request->post);exit;
+=======
+
+>>>>>>> add project
 		$this->load->model('catalog/product');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
@@ -745,6 +753,7 @@ class ControllerCatalogProduct extends Controller {
 			$data['mpn'] = '';
 		}
 
+<<<<<<< edf1dbfc68279620d1479dd25eb2b92ad7607c1d
 		if (isset($this->request->post['supplier_id'])) {
 			$data['supplier_id'] = $this->request->post['supplier_id'];
 		} elseif (!empty($product_info)) {
@@ -761,6 +770,8 @@ class ControllerCatalogProduct extends Controller {
 			$data['gt_id'] = '';
 		}
 
+=======
+>>>>>>> add project
 		if (isset($this->request->post['location'])) {
 			$data['location'] = $this->request->post['location'];
 		} elseif (!empty($product_info)) {
