@@ -1,0 +1,9 @@
+*.settings/
+*.buildpath
+*.project
+vqmod/
+vendor/
+*.lock
+config.php
+system/
+image/
