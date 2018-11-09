@@ -18,7 +18,7 @@ class ControllerCatalogProduct extends Controller {
 		$this->document->setTitle($this->language->get('heading_title'));
 
 		$this->load->model('catalog/product');
-
+		// d($this->request->post);exit;
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_catalog_product->addProduct($this->request->post);
 
@@ -68,7 +68,7 @@ class ControllerCatalogProduct extends Controller {
 		$this->load->language('catalog/product');
 
 		$this->document->setTitle($this->language->get('heading_title'));
-
+		// d($this->request->post);exit;
 		$this->load->model('catalog/product');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
@@ -743,6 +743,22 @@ class ControllerCatalogProduct extends Controller {
 			$data['mpn'] = $product_info['mpn'];
 		} else {
 			$data['mpn'] = '';
+		}
+
+		if (isset($this->request->post['supplier_id'])) {
+			$data['supplier_id'] = $this->request->post['supplier_id'];
+		} elseif (!empty($product_info)) {
+			$data['supplier_id'] = $product_info['supplier_id'];
+		} else {
+			$data['supplier_id'] = '';
+		}
+
+		if (isset($this->request->post['gold_type'])) {
+			$data['gt_id'] = $this->request->post['gold_type'];
+		} elseif (!empty($product_info)) {
+			$data['gt_id'] = $product_info['gold_type_id'];
+		} else {
+			$data['gt_id'] = '';
 		}
 
 		if (isset($this->request->post['location'])) {
