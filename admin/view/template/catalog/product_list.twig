@@ -77,21 +77,22 @@
               </div>
               <div class="col-sm-3">
                 <div class="form-group">
-                  <label class="control-label" for="input-image">{{ entry_image }}</label> <select name="filter_image" id="input-image" class="form-control">
+                  <label class="control-label" for="input-supplier">{{ entry_supplier }}</label> <select name="filter_supplier" id="input-supplier" class="form-control">
                     <option value=""></option>
-                    {% if filter_image == '1' %}
-                      <option value="1" selected="selected">{{ text_image_yes }}</option>
-                    {% else %}
-                      <option value="1">{{ text_image_yes }}</option>
-                    {% endif %}
-                    {% if filter_image == '0' %}
-                      <option value="0" selected="selected">{{ text_image_no }}</option>
-                    {% else %}
-                      <option value="0">{{ text_image_no }}</option>
-                    {% endif %}
+                    {% for supplier in supplier_list %}
+                      <option value="{{supplier.supplier_id}}" {% if supplier.supplier_id == filter_supplier %} selected="selected" {% endif %}>{{ supplier.supplier_short_name }}</option>
+                    {% endfor %}
                   </select>
                 </div>
-                <div class="form-group text-right">
+                <div class="form-group">
+                  <label class="control-label" for="input-gold-type">{{ entry_gold_type }}</label> <select name="filter_gold_type" id="input-gold-type" class="form-control">
+                    <option value=""></option>
+                    {% for gold_type in gold_type_list %}
+                      <option value="{{gold_type.gt_id}}" {% if gold_type.gt_id == filter_gold_type %} selected="selected" {% endif %}>{{ gold_type.gt_name }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="text-right">
                   <button type="button" id="button-filter" class="btn btn-default"><i class="fa fa-filter"></i> {{ button_filter }}</button>
                 </div>
               </div>
@@ -208,11 +209,17 @@ $('#button-filter').on('click', function() {
     url += '&filter_category=' + encodeURIComponent(filter_category);
   }
 
-  var filter_image = $('select[name=\'filter_image\']').val();
+  var filter_supplier = $('select[name=\'filter_supplier\']').val();
 
-	if (filter_image !== '') {
-		url += '&filter_image=' + encodeURIComponent(filter_image);
+	if (filter_supplier !== '') {
+		url += '&filter_supplier=' + encodeURIComponent(filter_supplier);
 	}
+
+  var filter_gold_type = $('select[name=\'filter_gold_type\']').val();
+
+  if (filter_gold_type !== '') {
+    url += '&filter_gold_type=' + encodeURIComponent(filter_gold_type);
+  }
 
 	location = 'index.php?route=catalog/product&user_token={{ user_token }}' + url;
 });

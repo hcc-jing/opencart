@@ -344,6 +344,14 @@ class ModelCatalogProduct extends Model {
 			$sql .= " AND p.status = '" . (int)$data['filter_status'] . "'";
 		}
 
+		if (isset($data['supplier_id']) && $data['supplier_id'] !== '') {
+			$sql .= " AND p.supplier_id = '" . (int)$data['supplier_id'] . "'";
+		}
+
+		if (isset($data['gold_type_id']) && $data['gold_type_id'] !== '') {
+			$sql .= " AND p.gold_type_id = '" . (int)$data['gold_type_id'] . "'";
+		}
+
 		if (isset($data['filter_image']) && $data['filter_image'] !== '') {
 			if ($data['filter_image'] == 1) {
 				$sql .= " AND (p.image IS NOT NULL AND p.image <> '' AND p.image <> 'no_image.png')";

@@ -274,6 +274,18 @@ class ControllerCatalogProduct extends Controller {
 			$sort = 'pd.name';
 		}
 
+		if (isset($this->request->get['filter_supplier'])) {
+			$supplier_id = $this->request->get['filter_supplier'];
+		} else {
+			$supplier_id = '';
+		}
+
+		if (isset($this->request->get['filter_gold_type'])) {
+			$gt_id = $this->request->get['filter_gold_type'];
+		} else {
+			$gt_id = '';
+		}
+
 		if (isset($this->request->get['order'])) {
 			$order = $this->request->get['order'];
 		} else {
@@ -285,7 +297,7 @@ class ControllerCatalogProduct extends Controller {
 		} else {
 			$page = 1;
 		}
-
+		// d($this->request->get);exit;
 		$url = '';
 
 		if (isset($this->request->get['filter_name'])) {
@@ -363,6 +375,17 @@ class ControllerCatalogProduct extends Controller {
 			);
 		}
 
+		$data['supplier_list']  = [];
+		$data['gold_type_list'] = [];
+
+		// supplier
+		$this->load->model('supplier/supplier');
+		$data['supplier_list'] = $this -> model_supplier_supplier -> getSuppliers();
+
+		// gold_type
+		$this->load->model('catalog/gold_type');
+		$data['gold_type_list'] = $this -> model_catalog_gold_type -> getGoldTypes();
+
 		$data['products'] = array();
 
 		$filter_data = array(
@@ -375,6 +398,8 @@ class ControllerCatalogProduct extends Controller {
 			'filter_image'    => $filter_image,
 			'sort'            => $sort,
 			'order'           => $order,
+			'supplier_id'     => $supplier_id,
+			'gold_type_id'    => $gt_id,
 			'start'           => ($page - 1) * $this->config->get('config_limit_admin'),
 			'limit'           => $this->config->get('config_limit_admin')
 		);
@@ -526,6 +551,14 @@ class ControllerCatalogProduct extends Controller {
 			$url .= '&order=' . $this->request->get['order'];
 		}
 
+		if (isset($this->request->get['supplier_id'])) {
+			$url .= '&supplier_id=' . $this->request->get['supplier_id'];
+		}
+
+		if (isset($this->request->get['gt_id'])) {
+			$url .= '&gt_id=' . $this->request->get['gt_id'];
+		}
+
 		$pagination = new Pagination();
 		$pagination->total = $product_total;
 		$pagination->page = $page;
@@ -550,7 +583,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
-
+		// d($data);exit;
 		$this->response->setOutput($this->load->view('catalog/product_list', $data));
 	}
 
