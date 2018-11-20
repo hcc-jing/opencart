@@ -2,9 +2,8 @@
 *.idea/
 *.buildpath
 *.project
-vqmod/
-vendor/
+/vendor
 *.lock
-config.php
-system/
-image/
+/config.php
+/system
+/image

@@ -80,7 +80,11 @@
                   <label class="control-label" for="input-supplier">{{ entry_supplier }}</label> <select name="filter_supplier" id="input-supplier" class="form-control">
                     <option value=""></option>
                     {% for supplier in supplier_list %}
-                      <option value="{{supplier.supplier_id}}" {% if supplier.supplier_id == filter_supplier %} selected="selected" {% endif %}>{{ supplier.supplier_short_name }}</option>
+                      {% if supplier.supplier_id == filter_supplier %}
+                      <option value="{{supplier.supplier_id}}" selected="selected">{{ supplier.supplier_short_name }}</option>
+                      {% else %}
+                      <option value="{{supplier.supplier_id}}">{{ supplier.supplier_short_name }}</option>
+                      {% endif %}                      
                     {% endfor %}
                   </select>
                 </div>

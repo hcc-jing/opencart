@@ -332,6 +332,14 @@ class ControllerCatalogProduct extends Controller {
 			$url .= '&sort=' . $this->request->get['sort'];
 		}
 
+		if (isset($this->request->get['filter_supplier'])) {
+			$url .= '&filter_supplier=' . $this->request->get['filter_supplier'];
+		}
+
+		if (isset($this->request->get['filter_gold_type'])) {
+			$url .= '&filter_gold_type=' . $this->request->get['filter_gold_type'];
+		}
+
 		if (isset($this->request->get['order'])) {
 			$url .= '&order=' . $this->request->get['order'];
 		}
@@ -491,8 +499,12 @@ class ControllerCatalogProduct extends Controller {
 			$url .= '&filter_status=' . $this->request->get['filter_status'];
 		}
 
-		if (isset($this->request->get['filter_image'])) {
-			$url .= '&filter_image=' . $this->request->get['filter_image'];
+		if (isset($this->request->get['filter_supplier'])) {
+			$url .= '&filter_supplier=' . $this->request->get['filter_supplier'];
+		}
+
+		if (isset($this->request->get['filter_gold_type'])) {
+			$url .= '&filter_gold_type=' . $this->request->get['filter_gold_type'];
 		}
 
 		if ($order == 'ASC') {
@@ -539,8 +551,12 @@ class ControllerCatalogProduct extends Controller {
 			$url .= '&filter_status=' . $this->request->get['filter_status'];
 		}
 
-		if (isset($this->request->get['filter_image'])) {
-			$url .= '&filter_image=' . $this->request->get['filter_image'];
+		if (isset($this->request->get['filter_supplier'])) {
+			$url .= '&filter_supplier=' . $this->request->get['filter_supplier'];
+		}
+
+		if (isset($this->request->get['filter_gold_type'])) {
+			$url .= '&filter_gold_type=' . $this->request->get['filter_gold_type'];
 		}
 
 		if (isset($this->request->get['sort'])) {
@@ -549,14 +565,6 @@ class ControllerCatalogProduct extends Controller {
 
 		if (isset($this->request->get['order'])) {
 			$url .= '&order=' . $this->request->get['order'];
-		}
-
-		if (isset($this->request->get['supplier_id'])) {
-			$url .= '&supplier_id=' . $this->request->get['supplier_id'];
-		}
-
-		if (isset($this->request->get['gt_id'])) {
-			$url .= '&gt_id=' . $this->request->get['gt_id'];
 		}
 
 		$pagination = new Pagination();
@@ -574,7 +582,8 @@ class ControllerCatalogProduct extends Controller {
 		$data['filter_price'] = $filter_price;
 		$data['filter_quantity'] = $filter_quantity;
 		$data['filter_status'] = $filter_status;
-		$data['filter_image'] = $filter_image;
+		$data['filter_supplier'] = $supplier_id;
+		$data['filter_gold_type'] = $gt_id;
 		$data['filter_category'] = $filter_category;
 
 		$data['sort'] = $sort;
