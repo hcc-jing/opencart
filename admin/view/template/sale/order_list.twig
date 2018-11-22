@@ -136,6 +136,7 @@
                             <div class="btn-group"><a href="{{ order.view }}" data-toggle="tooltip" title="{{ button_view }}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
                               <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span class="caret"></span></button>
                               <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a href="{{ order.split }}"><i class="fa fa-yelp"></i> {{ button_split }}</a></li>
                                 <li><a href="{{ order.edit }}"><i class="fa fa-pencil"></i> {{ button_edit }}</a></li>
                                 <li><a href="{{ order.order_id }}"><i class="fa fa-trash-o"></i> {{ button_delete }}</a></li>
                               </ul>

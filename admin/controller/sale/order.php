@@ -234,7 +234,8 @@ class ControllerSaleOrder extends Controller {
 				'date_modified' => date($this->language->get('datetime_format'), strtotime($result['date_modified'])),
 				'shipping_code' => $result['shipping_code'],
 				'view'          => $this->url->link('sale/order/info', 'user_token=' . $this->session->data['user_token'] . '&order_id=' . $result['order_id'] . $url),
-				'edit'          => $this->url->link('sale/order/edit', 'user_token=' . $this->session->data['user_token'] . '&order_id=' . $result['order_id'] . $url)
+				'edit'          => $this->url->link('sale/order/edit', 'user_token=' . $this->session->data['user_token'] . '&order_id=' . $result['order_id'] . $url),
+				'split'         => $this->url->link('sale/order/orderSplit', 'user_token=' . $this->session->data['user_token'] . '&order_id=' . $result['order_id'] . $url),
 			);
 		}
 
@@ -701,6 +702,23 @@ class ControllerSaleOrder extends Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 
 		$this->response->setOutput($this->load->view('sale/order_form', $data));
+	}
+
+	/**
+	 * 拆单
+	 */
+	public function orderSplit()
+	{
+		$this->load->model('sale/order');
+		if (isset($this->request->get['order_id'])) {
+			$order_id = (int)$this->request->get['order_id'];
+		} else {
+			$order_id = 0;
+		}
+		// 获取订单信息
+		$order_info = $this->model_sale_order->getOrder($order_id);
+		d($order_info);
+		exit;
 	}
 
 	public function info() {

@@ -39,6 +39,7 @@ $_['text_home']                     = '首页';
 // Button
 $_['button_add']                    = '添加';
 $_['button_delete']                 = '删除';
+$_['button_split']                  = '拆单';
 $_['button_save']                   = '保存';
 $_['button_cancel']                 = '取消';
 $_['button_cancel_recurring']       = '取消分期付款';
