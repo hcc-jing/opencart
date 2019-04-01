@@ -19,6 +19,7 @@ class ControllerCatalogAttribute extends Controller {
 
 		$this->load->model('catalog/attribute');
 
+
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_catalog_attribute->addAttribute($this->request->post);
 
